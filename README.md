@@ -1,9 +1,12 @@
-# Pythia*
+# Python Like*
 
 A work in progress...
 
-Repackaging data for matplotlib seems to take as much work as the actual analysis. I am going to try to build a wrapper around matplotlib to cut down on the work.
+A string compare function that analyzes to what extent strA is similar to strB.
 
-OR... maybe just use Seaborn...
+def like(strA, strB, args1 = float)
 
-\* Why 'Pythia'?  In Greek mythology, Pythia was the Oracle of Delphi and her name was derived from Python (which was actually a dragon) slain by Apollo.
+args1 in range 0 to 1:
+
+* If args1 then return True or False if similarity >= args1
+* If not args1 then return float 0:1 - 0 = completely dis similar; 1 = exact match.
