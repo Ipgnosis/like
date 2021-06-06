@@ -36,4 +36,4 @@ args1 in range 0 to 1:
 
 ## Test data
 
-The test data (test_data.json) is extracted from a Wikipedia article on the most misspelled words: [Commonly misspelled English words](https://en.wikipedia.org/wiki/Commonly_misspelled_English_words)
+The test data (test_data.json) is extracted from a Wikipedia article on the most misspelled words: [Commonly misspelled English words](https://en.wikipedia.org/wiki/Commonly_misspelled_English_words).
