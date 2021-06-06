@@ -30,6 +30,9 @@ def like(strA, strB, *args):
 
 
 def main():
+	
+	from difflib import SequenceMatcher
+
 	str1 = 'Kazakhstan'
 	str2 = 'Khazakstan'
 

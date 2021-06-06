@@ -32,3 +32,8 @@ args1 in range 0 to 1:
 
 * If args[0] then return True or False if similarity >= args[0]
 * If not args then return float 0:1 - 0 = completely dis similar; 1 = exact match.
+
+
+## Test data
+
+The test data (test_data.json) is extracted from a Wikipedia article on the most misspelled words: (Commonly misspelled English words)[https://en.wikipedia.org/wiki/Commonly_misspelled_English_words]
