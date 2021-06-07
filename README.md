@@ -1,4 +1,4 @@
-# Python Like
+# Python Like function
 
 **This is a work in progress...**
 
@@ -37,7 +37,6 @@ args1 in range 0 to 1:
 
 * If args[0] then return True (if similarity >= args[0]) or False
 * If not args[0] then return float 0:1 - 0 = completely dissimilar; 1 = exact match.
-
 
 ## Test data
 
