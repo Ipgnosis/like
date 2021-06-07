@@ -23,6 +23,7 @@ This is *particularly useful* when a string contains international characters (t
 	• ñ: the Spanish letter 'eñe'
 	• ü: the German (etc.) letter u with an umlaut
 	• ß: the German letter 'eszett'
+	ß: the German letter 'eszett'
 	* ç: the French c-cedilla
 	
 (*I suspect that the Cyrillic character set is overly ambitious...*)
