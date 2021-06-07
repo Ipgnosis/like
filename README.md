@@ -20,12 +20,12 @@ This will be particularly useful for 'typos' resulting from keyboarding errors (
 
 This is *particularly useful* when a string contains international characters (that aren't available on all keyboards), such as:
 
-	• ñ: the Spanish letter 'eñe'
-	• ü: the German (etc.) letter u with an umlaut
-	• ß: the German letter 'eszett'
-	ß: the German letter 'eszett'
+	* ñ: the Spanish letter 'eñe'
+	* ü: the German (etc.) letter u with an umlaut
 	* ç: the French c-cedilla
-	
+	* ß: the German letter 'eszett'
+	* ç: the French c-cedilla
+
 (*I suspect that the Cyrillic character set is overly ambitious...*)
 
 Note that the eszett (and maybe others also) is a complication of the general problem in that two letters 'ss' are substituted for the eszett when the character set in use doesn’t contain the eszett.  For example: the German word for 'street' is 'straße' which can also be written 'strasse'.
