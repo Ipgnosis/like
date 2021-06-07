@@ -2,7 +2,7 @@
 
 **This is a work in progress...**
 
-A string compare function that analyzes to what extent strA is similar to strB.
+A string compare function that analyzes to what extent string A is similar to string B.
 
 ## Background
 
@@ -24,7 +24,6 @@ This is *particularly useful* when a string contains international characters (t
 	* ü: the German (etc.) letter u with an umlaut
 	* ç: the French c-cedilla
 	* ß: the German letter 'eszett'
-	* ç: the French c-cedilla
 
 (*I suspect that the Cyrillic character set is overly ambitious...*)
 
