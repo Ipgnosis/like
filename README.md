@@ -6,7 +6,7 @@ A string compare function that analyzes to what extent strA is similar to strB.
 
 ## Background
 
-This idea came from working on a different project where I kept misspelling the country name 'Kazakhstan' as 'Khazakstan'.  I searched for a 'like' function in Python and found none.  This is strange, because this has been implmented in other languages before: there are even 'sounds like' implementations (i.e. 'soundex').  So, just for fun, I thought I would give it a shot.  A lot easier than implementing a spelling checker (or learning how to spell...)
+This idea came from working on a different project where I kept misspelling the country name 'Kazakhstan' as 'Khazakstan'.  I searched for a 'like' function in Python and found none.  This is strange, because this has been implmented in other languages before: there are even 'sounds like' implementations (i.e. 'soundex').  So, just for fun, I thought I would give it a shot.  I expect that this will be a lot easier than implementing a spelling checker (or learning how to spell...)
 
 ## Ultimate goal
 
