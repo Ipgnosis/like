@@ -19,6 +19,7 @@ The implementation is almost certainly on some kind of probability function.  As
 This will be particularly useful for 'typos' resulting from keyboarding errors (e.g. 'typo' vs. 'tyop') that have found their way into data, thereby making it difficult to search upon.
 
 This is *particularly useful* when a string contains international characters (that aren't available on all keyboards), for example:
+
 * ñ: the Spanish letter 'eñe'
 * ü: the German (etc.) letter u with an umlaut
 * ç: the French c-cedilla
@@ -26,7 +27,7 @@ This is *particularly useful* when a string contains international characters (t
 
 (*I suspect that the Cyrillic character set is overly ambitious...*)
 
-Note that the eszett (and maybe others also) is a complication of the general problem in that two letters 'ss' are substituted for the eszett when the character set in use doesn’t contain the eszett.  For example: the German word for 'street' is 'straße' which can also be written 'strasse'.
+Note that the eszett (and maybe others also) is a complication of the general problem in that two letters 'ss' can be substituted for the eszett when the keyboard/character set in use doesn’t contain the eszett.  For example: the German word for 'street' is 'straße' which can also be written 'strasse'.
 
 ## Implementation
 
@@ -34,8 +35,8 @@ def like(strA, strB, args1 = float)
 
 args1 in range 0 to 1:
 
-* If args[0] then return True or False if similarity >= args[0]
-* If not args then return float 0:1 - 0 = completely dis similar; 1 = exact match.
+* If args[0] then return True (if similarity >= args[0]) or False
+* If not args[0] then return float 0:1 - 0 = completely dissimilar; 1 = exact match.
 
 
 ## Test data
