@@ -1,8 +1,12 @@
 # Python Like
 
-A work in progress...
+**This is a work in progress...**
 
 A string compare function that analyzes to what extent strA is similar to strB.
+
+## Background
+
+This idea came from working on a different project where I kept misspelling the country name 'Kazakhstan' as 'Khazakstan'.  I searched for a 'like' function in Python and found none.  This is strange, because this has been implmented in other languages before: there are even 'sounds like' implementations (i.e. 'soundex').  So, just for fun, I thought I would give it a shot.  A lot easier than implementing a spelling checker (or learning how to spell...)
 
 ## Ultimate goal
 
@@ -10,9 +14,9 @@ An extension of the string object that adds a 'like' operator to test equivalenc
 
 **Note that this is not a spelling checker.**
 
-The implementation is almost certainly on some kind of probability function.
+The implementation is almost certainly on some kind of probability function.  As an alternate, I will also try to incorporate the work of [Levenshtein](https://en.wikipedia.org/wiki/Levenshtein_distance) and/or [Damerau-Levenshtein](https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance).
 
-Useful for 'typos' resulting from keyboarding errors, such as 'typo' vs. 'tyop' that haven't been caught by a spelling checker.
+This will be particularly useful for 'typos' resulting from keyboarding errors (e.g. 'typo' vs. 'tyop') that have found their way into data, making it difficult to search upon.
 
 This is particularly useful when a string contains international characters (that aren't available on all keyboards), such as:
 
@@ -21,8 +25,6 @@ This is particularly useful when a string contains international characters (tha
 	• ß: the German letter 'eszett'
 
 Note that the eszett (and maybe others also) is a complication of the general problem in that two letters 'ss' are substituted for the eszett when the character set in use doesn’t contain the eszett.  For example: the German word for 'street' is 'straße' which can also be written 'strasse'.
-
-Extra credit for 'soundslike()', which would be really cool…
 
 ## Implementation
 
