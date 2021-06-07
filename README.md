@@ -18,7 +18,7 @@ The implementation is almost certainly on some kind of probability function.  As
 
 This will be particularly useful for 'typos' resulting from keyboarding errors (e.g. 'typo' vs. 'tyop') that have found their way into data, thereby making it difficult to search upon.
 
-This is *particularly useful* when a string contains international characters (that aren't available on all keyboards), for example:
+This is *particularly useful* when a string contains international characters that aren't available on all keyboards, for example:
 
 * ñ: the Spanish letter 'eñe'
 * ü: the German (etc.) letter u with an umlaut
