@@ -1,5 +1,8 @@
 # testing out different approaches for a candidate 'like' function
 
+from naive_algorithm import naive_algo
+
+
 # how well does the levenshtein distance perform?
 def levenshtein():
     pass
@@ -13,43 +16,6 @@ def damerau_levenshtein():
 # can we use correlation to test likeness?
 def correl():
     pass
-
-
-# establish a baseline of performance with a naive string matching algorithm
-def naive_algo(string1, string2, *args):
-
-    len1 = len(string1)
-    len2 = len(string2)
-    tally = 0.0
-
-    avg_len = (len1 + len2) / 2
-
-    if args:
-        incr = 0.1
-        threshold = args[0]
-        incr = (threshold / avg_len) - incr
-    else:
-        incr = 1
-        incr = incr / avg_len
-
-    if len1 == len2:
-        tally += 0.5
-
-        for posn1 in range(len(string1)):
-            if string1[posn1] == string2[posn1]:
-                tally += incr
-    else:
-        # inequal string lengths results in index error from a for loop
-        # need a way to evaluate strings of inequal length
-        print('len({}) = {}; len({}) = {}'.format(string1, len1, string2, len2))
-
-    if args:
-        if tally >= threshold:
-            return True
-        else:
-            return False
-    else:
-        return tally
 
 
 # return value 0:1 as a measure of 'likeness' or True (exact match)
@@ -68,6 +34,7 @@ def like(strA, strB, *args):
     return result
 
 
+# module test driver function
 def main():
 
     import os
@@ -100,5 +67,6 @@ def main():
         print("No data")
 
 
+# module test
 if __name__ == "__main__":
     main()
