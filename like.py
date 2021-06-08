@@ -1,5 +1,21 @@
-# the like code
+# testing out different approaches for a candidate 'like' function
 
+# how well does the levenshtein distance perform?
+def levenshtein():
+    pass
+
+
+# how well does the damerau-levenshtein distance perform?
+def damerau_levenshtein():
+    pass
+
+
+# can we use correlation to test likeness?
+def correl():
+    pass
+
+
+# establish a baseline of performance with a naive string matching algorithm
 def naive_algo(string1, string2, *args):
 
     len1 = len(string1)
@@ -37,6 +53,7 @@ def naive_algo(string1, string2, *args):
 
 
 # return value 0:1 as a measure of 'likeness' or True (exact match)
+# currently using this function as a switch to test out alternative algos
 def like(strA, strB, *args):
 
     if strA == strB:
@@ -44,6 +61,7 @@ def like(strA, strB, *args):
 
     if args:
         result = naive_algo(strA, strB, args[0])
+
     else:
         result = naive_algo(strA, strB)
 
@@ -66,12 +84,14 @@ def main():
     param = True
     # param = False
 
-    # run function like against test data
+    limit = 0.9
+
+    # run 'like' function against test data
     if data:
         for word_list in data['test_data']:
             for misp in range(1, len(word_list)):
                 if param:
-                    result = like(word_list[0], word_list[misp], 0.9)
+                    result = like(word_list[0], word_list[misp], limit)
                 else:
                     result = like(word_list[0], word_list[misp])
 
