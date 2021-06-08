@@ -1,4 +1,4 @@
-# Python Like function
+# Python 'Like' function
 
 **This is a work in progress...**
 
