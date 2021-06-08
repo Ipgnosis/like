@@ -10,7 +10,7 @@ This idea came from working on a different project where I kept misspelling the 
 
 ## Ultimate goal
 
-An extension of the string object that adds a 'like' operator to test equivalence.  This will enable 'Khazakstan' to match to 'Kazakhstan'.
+An extension of the Python string object that adds a 'like' operator to test equivalence.  This will enable 'Khazakstan' to match to 'Kazakhstan'.
 
 **Note that this is not a spelling checker.**
 

@@ -1,31 +1,31 @@
 # the like code
 
+def naive_algo(string1, string2, *args):
 
-# return value 0:1 as a measure of 'likeness' or True (exact match)
-def like(strA, strB, *args):
+    len1 = len(string1)
+    len2 = len(string2)
+    tally = 0.0
+
+    avg_len = (len1 + len2) / 2
 
     if args:
+        incr = 0.1
         threshold = args[0]
+        incr = (threshold / avg_len) - incr
+    else:
+        incr = 1
+        incr = incr / avg_len
 
-    if strA == strB:
-        return True
-
-    lenA = len(strA)
-    lenB = len(strB)
-
-    tally = 0.0
-    incr = 0.1
-
-    if lenA == lenB:
+    if len1 == len2:
         tally += 0.5
 
-        for posn1 in range(len(strA)):
-            if strA[posn1] == strB[posn1]:
+        for posn1 in range(len(string1)):
+            if string1[posn1] == string2[posn1]:
                 tally += incr
     else:
         # inequal string lengths results in index error from a for loop
         # need a way to evaluate strings of inequal length
-        print('len({}) = {}; len({}) = {}'.format(strA, lenA, strB, lenB))
+        print('len({}) = {}; len({}) = {}'.format(string1, len1, string2, len2))
 
     if args:
         if tally >= threshold:
@@ -36,19 +36,25 @@ def like(strA, strB, *args):
         return tally
 
 
+# return value 0:1 as a measure of 'likeness' or True (exact match)
+def like(strA, strB, *args):
+
+    if strA == strB:
+        return True
+
+    if args:
+        result = naive_algo(strA, strB, args[0])
+    else:
+        result = naive_algo(strA, strB)
+
+    return result
+
+
 def main():
 
     import os
-    # from difflib import SequenceMatcher
 
     from read_json_file import read_json_data
-
-    # str1 = 'Kazakhstan'
-    # str2 = 'Khazakstan'
-    # no_args = like(str1, str2)
-    # with_args = like(str1, str2, 0.9)
-    # print('no_args =', no_args)
-    # print('with_args =', with_args)
 
     # get test data
     test_data = "test_data.json"
@@ -57,10 +63,21 @@ def main():
 
     data = read_json_data(test_data_path)
 
+    param = True
+    # param = False
+
     # run function like against test data
     if data:
-        for lis in data['test_data']:
-            print("{}, {}, {}".format(lis[0], lis[1], like(lis[0], lis[1], 0.9)))
+        for word_list in data['test_data']:
+            for misp in range(1, len(word_list)):
+                if param:
+                    result = like(word_list[0], word_list[misp], 0.9)
+                else:
+                    result = like(word_list[0], word_list[misp])
+
+                print("Is '{}' like '{}'? Result = {}\n".format(word_list[0], word_list[misp], result))
+    else:
+        print("No data")
 
 
 if __name__ == "__main__":
