@@ -30,6 +30,11 @@ def case_crunching(str1):
     print(lowers)
 
 
+# can we use correlation to test likeness?
+def correl():
+    pass
+
+
 # establish a baseline of performance with a naive string matching algorithm
 def naive_algo(string1, string2, *args):
 

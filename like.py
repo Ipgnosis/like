@@ -13,11 +13,6 @@ def damerau_levenshtein():
     pass
 
 
-# can we use correlation to test likeness?
-def correl():
-    pass
-
-
 # return value 0:1 as a measure of 'likeness' or True (exact match)
 # currently using this function as a switch to test out alternative algos
 def like(strA, strB, *args):
