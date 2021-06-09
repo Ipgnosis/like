@@ -16,7 +16,7 @@ An extension of the Python string object that adds a 'like' operator to test equ
 
 The initial implementation will evaluate some kind of probability function.  As a comparison, I will test against the work of [Levenshtein](https://en.wikipedia.org/wiki/Levenshtein_distance) and/or [Damerau-Levenshtein](https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance).
 
-This will be particularly useful for 'typos' resulting from keyboarding errors (e.g. 'typo' vs. 'tyop') that have found their way into data, thereby making it difficult to search upon.
+This will be useful for 'typos' resulting from keyboarding errors (e.g. 'typo' vs. 'tyop') that have found their way into data, thereby making it difficult to search upon.
 
 This is *particularly useful* when a string contains international characters that aren't available on all keyboards, for example:
 
