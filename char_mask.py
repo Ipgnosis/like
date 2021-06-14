@@ -1,12 +1,53 @@
-# detect common substrings between two strings
+# count characters in same position between two strings
+
+
+from naive_algorithm import get_lens
+
+
+def char_overlap(string1, string2):
+
+    sort1 = "".join(sorted(string1))
+    sort2 = "".join(sorted(string2))
+
+    if sort1 == sort2:
+        return 1
+    else:
+        return 0
+
 
 # a common substring is defined as two (or more) consecutve characters that appear in both strings
-def common_substr(string1, string2):
+def count_chars(string1, string2):
 
     substr_list = []
+    count = 0
 
-    # traverse first string trailing char
-    for i in range(len(string1)):
+    # evaluate the string lengths
+    lens = get_lens(string1, string2)
+
+    # if the strings are of unequal length, make string1 the longer string
+    if (not lens[0]) and (lens[2] > lens[1]):
+        tempstr = string1
+        string1 = string2
+        string2 = tempstr
+
+    # if strings of equal length
+    if lens[0]:
+        # traverse the strings
+        for i in range(len(string1)):
+            if string1[i] == string2[i]:
+                count += 1
+    else:
+        j = 0
+        for i in range(len(string1)):
+            if string1[i] == string2[j]:
+                count += 1
+                j += 1
+            else:
+                pass
+
+
+
+
         candidate_str = ""
         caught = False
 
