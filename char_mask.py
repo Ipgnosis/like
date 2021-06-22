@@ -4,7 +4,7 @@
 from naive_algorithm import get_lens
 
 
-def char_overlap(string1, string2):
+def char_match(string1, string2):
 
     sort1 = "".join(sorted(string1))
     sort2 = "".join(sorted(string2))
