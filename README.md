@@ -27,7 +27,7 @@ This is *particularly useful* when a string contains international characters th
 
 (*I suspect that the Cyrillic character set is overly ambitious...*)
 
-Note that the eszett (and others also) is a complication of the general problem in that two letters 'ss' can be substituted for the eszett when the keyboard/character set in use doesn’t contain the eszett.  For example: the German word for 'street' is 'straße', which can also be written 'strasse'.
+Note that the eszett (and others also) is a complication of the general problem in that two letters (i.e. 'ss') can be substituted for the eszett when the keyboard/character set in use doesn’t contain the eszett.  For example: the German word for 'street' is 'straße', which can also be written 'strasse'.
 
 ## Implementation
 
