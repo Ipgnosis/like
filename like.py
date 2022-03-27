@@ -17,10 +17,10 @@ def damerau_levenshtein():
 # currently using this function as a switch to test out alternative algos
 def like(strA, strB, *args):
 
-    if strA == strB:
+    if strA == strB:  # if A matches B, we are done
         return True
 
-    if args:
+    if args:  # if a limit has been provided, send it
         result = naive_algo(strA, strB, args[0])
 
     else:
@@ -41,23 +41,24 @@ def main():
     CURRENT_DIR_STR = os.path.abspath('')
     test_data_path = os.path.join(CURRENT_DIR_STR, 'data', test_data)
 
-    data = read_json_data(test_data_path)
+    data_file = read_json_data(test_data_path)
 
-    param = True
-    # param = False
+    # Send limit or not??
+    # param = True
+    param = False
 
     limit = 0.9
 
     # run 'like' function against test data
-    if data:
-        for word_list in data['test_data']:
+    if data_file:
+        for word_list in data_file['test_data']:
             for misp in range(1, len(word_list)):
                 if param:
                     result = like(word_list[0], word_list[misp], limit)
                 else:
                     result = like(word_list[0], word_list[misp])
 
-                print("Is '{}' like '{}'? Result = {}\n".format(word_list[0], word_list[misp], result))
+                print(f"'{word_list[0]}' cf. '{word_list[misp]}'? Result = {result}")
     else:
         print("No data")
 

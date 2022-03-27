@@ -2,71 +2,91 @@
 
 # return the lengths of the strings
 def get_lens(str1, str2):
+    """For two strings, return:
+        A bool lengths equal/not equal
+        Length str 1
+        Length str 2
+        The shorter of the 2 strings or str1
+        The longer of the 2 strings or str2
+        """
 
     len1 = len(str1)
     len2 = len(str2)
 
     if len1 == len2:
-        lbool = True
-    else:
-        lbool = False
-
-    return (lbool, len1, len2)
+        return (True, len1, len2, str1, str2)
+    elif len1 > len2:  # str1 is shorter
+        return (False, len2, len1, str2, str1)
+    else:  # str2 is shorter
+        return (False, len1, len2, str1, str2)
 
 
 # compile data on upper/lower case incidence in the string
 def case_crunching(str1):
+    """Compile data on upper/lower case incidence in the string"""
 
     uppers = []
     lowers = []
+    upper_count = 0
+    lower_count = 0
 
     for ch in str1:
         if ch.isupper():
             uppers.append(ch)
+            upper_count += 1
         else:
             lowers.append(ch)
+            lower_count += 1
 
-    print(uppers)
-    print(lowers)
+    print(f"Upper case chars: {uppers}")
+    print(f"Lower case chars: {lowers}")
+
+    return (upper_count, lower_count)
 
 
 # can we use correlation to test likeness?
-def correl():
-    pass
+def correl(str1, str2):
+
+    equal_len, len1, len2, strA, strB = get_lens(sorted(str1), sorted(str2))
+
+    if equal_len:
+        pass
 
 
 # establish a baseline of performance with a naive string matching algorithm
 def naive_algo(string1, string2, *args):
+    """Establish a baseline of performance with a naive string matching algorithm"""
 
-    str_len = get_lens(string1, string2)
-
+    # test the lengths and get the shorter string back first
+    equal_len, len1, len2, strA, strB = get_lens(string1, string2)
+    prior_equivalence = True  # whether the last string comparison succeeded or not
     tally = 0.0
 
-    avg_len = (str_len[1] + str_len[2]) / 2
+    if not equal_len:
+        tally = len2 - len1  # start the tally off at the difference between the 2 lengths
+
+    avg_len = (len1 + len2) / 2  # ??
 
     if args:
         incr = 0.1
-        threshold = args[0]
-        incr = (threshold / avg_len) - incr
+        threshold = args[0]  # the limit below which returns false
+        incr = (threshold / avg_len) - incr  # ??
     else:
         incr = 1
-        incr = incr / avg_len
+        # incr = incr / avg_len  # ??
 
-    if str_len[0]:
-        tally += 0.5
-
-        for i in range(len(string1)):
-            if string1[i] == string2[i]:
-                tally += incr
-            elif (i > 0) and (string1[i] == string2[i - 1]):
-                tally += incr / 2
-            elif (i < str_len[2]) and (string1[i] == string2[i + 1]):
-                tally += incr / 2
-
-    else:
-        # inequal string lengths results in index error from a 'for' loop
-        # need a way to evaluate strings of inequal length
-        print('len({}) = {}; len({}) = {}'.format(string1, str_len[1], string2, str_len[2]))
+    for i, char in enumerate(strA):  # iterate over the shorter string
+        if char == strB[i]:  # if chars are equal
+            tally += incr
+            prior_equivalence = True
+        elif prior_equivalence:
+            if (i < len2 - 1) and (char == strB[i + 1]):
+                tally += incr / 2  # give a half point for a transposition
+                prior_equivalence = False
+        else:  # the chars are unequal and the last pair was unequal
+            if (char == strB[i - 1]):
+                tally += incr / 2  # give a half point for a transposition
+                prior_equivalence = False
 
     if args:
         if tally >= threshold:
@@ -74,7 +94,7 @@ def naive_algo(string1, string2, *args):
         else:
             return False
     else:
-        return tally
+        return tally / len2
 
 
 # module test driver function
@@ -82,8 +102,10 @@ def main():
 
     strA = "Khazakstan"
     strB = "Kazakhstan"
+    strA = "amateur"
+    strB = "amature"
 
-    print(naive_algo(strA, strB))
+    print(f"The difference between '{strA}' and '{strB}' is {naive_algo(strA, strB)}")
 
 
 # module test
