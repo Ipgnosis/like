@@ -1,6 +1,8 @@
 # testing out different approaches for a candidate 'like' function
 
 from naive_algorithm import naive_algo
+from get_lengs import get_lengs
+from cursor_scan import cursor_scan
 
 
 # how well does the levenshtein distance perform?
@@ -15,18 +17,30 @@ def damerau_levenshtein():
 
 # return value 0:1 as a measure of 'likeness' or True (exact match)
 # currently using this function as a switch to test out alternative algos
-def like(strA, strB, *args):
+def like(str1, str2, *args):
 
-    if strA == strB:  # if A matches B, we are done
+    if str1 == str2:  # if A matches B, we are done
         return True
 
+    equal_len, len1, len2, strA, strB = get_lengs(str1, str2)
+
+    this_cursor_score = 0
+    cursor_count = 0
+    new_cursor_score = 0
+
     if args:  # if a limit has been provided, send it
-        result = naive_algo(strA, strB, args[0])
+        # result = naive_algo(strA, strB, args[0])
+        pass
 
     else:
-        result = naive_algo(strA, strB)
+        # result = naive_algo(strA, strB)
+        for this_cursor in range(2, len1 + 1):
+            this_cursor_score += cursor_scan(strA, strB, this_cursor, len1)
+            cursor_count = (len1 + 1 - this_cursor) * (len2 + 1 - this_cursor)
+            if this_cursor_score > 0 and cursor_count > 0:
+                new_cursor_score += this_cursor_score / cursor_count
 
-    return result
+    return new_cursor_score
 
 
 # module test driver function

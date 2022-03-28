@@ -1,24 +1,6 @@
 # naive algorithm as a baseline
 
-# return the lengths of the strings
-def get_lens(str1, str2):
-    """For two strings, return:
-        A bool lengths equal/not equal
-        Length str 1
-        Length str 2
-        The shorter of the 2 strings or str1
-        The longer of the 2 strings or str2
-        """
-
-    len1 = len(str1)
-    len2 = len(str2)
-
-    if len1 == len2:
-        return (True, len1, len2, str1, str2)
-    elif len1 > len2:  # str1 is shorter
-        return (False, len2, len1, str2, str1)
-    else:  # str2 is shorter
-        return (False, len1, len2, str1, str2)
+from get_lengs import get_lengs
 
 
 # compile data on upper/lower case incidence in the string
@@ -47,7 +29,7 @@ def case_crunching(str1):
 # can we use correlation to test likeness?
 def correl(str1, str2):
 
-    equal_len, len1, len2, strA, strB = get_lens(sorted(str1), sorted(str2))
+    equal_len, len1, len2, strA, strB = get_lengs(sorted(str1), sorted(str2))
 
     if equal_len:
         pass
@@ -58,7 +40,7 @@ def naive_algo(string1, string2, *args):
     """Establish a baseline of performance with a naive string matching algorithm"""
 
     # test the lengths and get the shorter string back first
-    equal_len, len1, len2, strA, strB = get_lens(string1, string2)
+    equal_len, len1, len2, strA, strB = get_lengs(string1, string2)
     prior_equivalence = True  # whether the last string comparison succeeded or not
     tally = 0.0
 
