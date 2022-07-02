@@ -4,60 +4,53 @@
 def damerau_levenshtein(a, b):
     '''Returns an integer indicating the number of insertions, substitutions or transpositions separating str a and str b'''
 
-    # a = car
-    # b = cat
     lenA = len(a)
     lenB = len(b)
+    firstEl = -1
     maxdist = lenA + lenB
 
-    Σ = 26
+    listA = [0 for x in range(-1, lenA)]
+    listB = [0 for y in range(-1, lenB)]
+    stringA = [letterA for letterA in a]
+    stringB = [letterB for letterB in b]
+    d = [listA, listB]  # alphabet length
+    da = []
 
-    listA = []
-    listB = []
-    da = []  # alphabet length
-
-    for i in range(1, Σ + 1):  # 1 to |Σ| # inclusive do
-        da[i] = 0
+    for z in range(1, Σ):
+        da[z] = 0
     # da = [0, 0, 0]
 
-    for j in range(-1, lenA, 1):
-        listA[j] = 0
-    # listA = [0, 0, 0, 0]
-
-    for k in range(-1, lenB, 1):
-        listB[k] = 0
-    # listB = [0, 0, 0, 0]
-
-    d = [listA, listB]  # a 2-d array of integers, dimensions length(a)+2, length(b)+2
+    Σ = 26
     # note that d has indices starting at −1, while a, b and da are one-indexed.
     # d = [[0, 0, 0, 0], [0, 0, 0, 0]]
 
-    d[−1][−1] = maxdist
+    d[firstEl][firstEl] = maxdist
 
-    for l in range(0, lenA):  # inclusive do
-        d[l][−1] = maxdist
-        d[l][0] = l
+    for i in range(0, lenA):  # inclusive do
+        d[i][firstEl] = maxdist
+        d[i][0] = i
 
-    for m in range(0, lenB):  # inclusive do
-        d[−1][m] = maxdist
-        d[0][m] = m
+    for j in range(0, lenB):  # inclusive do
+        d[firstEl][j] = maxdist
+        d[0][j] = j
 
-    for r in range(1, lenA)  # inclusive do
+    for r in range(1, lenA):
         db = 0
-        for s in range(1, lenB)  # inclusive do
+        for s in range(1, lenB):
             k = da[b][s]
-            ℓ = db
+            L = db
 
-            if a[r] == b[s]:
+            if stringA[r] == stringB[s]:
                 cost = 0
                 db = s
             else:
                 cost = 1
 
-            d[r][s] = minimum(d[r−1][s−1] + cost,  # substitution
-                               d[r][s−1] + 1,    # insertion
-                               d[r−1][s] + 1,    # deletion
-                               d[k−1][ℓ−1] + (r−k−1) + 1 + (s-ℓ−1))  # transposition
+            d[r][s] = min(  d[r − 1][s − 1] + cost,  # substitution
+                            d[r][s − 1] + 1,    # insertion
+                            d[r − 1][s] + 1,    # deletion
+                            d[k − 1][L − 1] + (r − k − 1) + 1 + ( s - L − 1)
+                        )  # transposition
 
         da[a][r] = r  ### huh? ###
 
@@ -70,7 +63,7 @@ def main():
     str2 = 'Khazakstan'
 
     result = damerau_levenshtein(str1, str2)
-    print(result)
+    print(f"The damerau-levenshtien number of {str1} and {str2} is {result}")
 
 
 # stand-alone test invocation

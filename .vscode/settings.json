@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "C:\\Users\\Ipgnosis\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+    "python.pythonPath": "C:\\Python\\python.exe",
     "python.linting.pylintEnabled": false,
     "python.linting.enabled": true,
     "python.linting.flake8Enabled": true,
